@@ -6,7 +6,7 @@ ADD . /src
 RUN cd /src && go build -o goserve
 
 # final stage
-FROM alpine
+FROM scratch
 WORKDIR /app
 COPY --from=build-env /src/goserve /app/
 ENTRYPOINT ./goserve
