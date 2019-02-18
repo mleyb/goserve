@@ -9,7 +9,6 @@ steps:
     image: golang:latest
     pull: true
     commands:
-      - go get
       - go vet
       - go test -v cover
 
