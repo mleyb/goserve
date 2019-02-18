@@ -18,7 +18,6 @@ pipeline:
     image: docker
     commands:
       - docker build \
-        --label org.label-schema.build-date=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
-        --label org.label-schema.vcs-ref=DRONE_COMMIT \
-        --label org.label-schema.vcs-url="https://github.com/mleyb/goserve" \
+        --build-arg VCS_REF=DRONE_COMMIT \
+        --build-arg VCS_URL="https://github.com/mleyb/goserve" \
         .
