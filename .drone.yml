@@ -1,16 +1,34 @@
-workspace:
-  base: /go
-  path: src/github.com/mleyb/goserve
+kind: pipeline
+name: test
 
-pipeline:
-  test:
+clone:
+  depth: 50
+
+steps:
+  - name: testing
     image: golang:latest
+    pull: true
     commands:
       - go get
       - go vet
-      - go test -v -cover
-  build:
-    image: golang:latest
-    commands:
-      - go get
-      - go build
+      - go test -v cover
+
+---
+kind: pipeline
+name: build
+
+clone:
+  depth: 50
+
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    repo: mleybourne/goserve
+    username:
+      from_secret: DOCKER_USERNAME
+    password:
+      from_secret: DOCKER_PASSWORD
+
+depends_on:
+  - test
