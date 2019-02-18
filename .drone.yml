@@ -14,3 +14,11 @@ pipeline:
     commands:
       - go get
       - go build
+  docker:
+    image: plugins/docker
+    settings:
+      repo: mleybourne/goserve
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
