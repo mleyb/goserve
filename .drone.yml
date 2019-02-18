@@ -18,3 +18,5 @@ pipeline:
     image: docker
     commands:
       - docker build --build-arg VCS_REF=DRONE_COMMIT --build-arg VCS_URL="https://github.com/mleyb/goserve" .
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
