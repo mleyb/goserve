@@ -15,7 +15,7 @@ steps:
     commands:
       - go get
       - go vet
-      - go test -v cover
+      - go test -coverprofile cp.out
 
 ---
 kind: pipeline
