@@ -13,8 +13,9 @@ steps:
     image: golang:latest
     pull: true
     commands:
-      - go get -v github.com/gorilla/mux
-      - go get -v github.com/stretchr/testify/assert
+      - go get -v ./...
+      #- go get -v github.com/gorilla/mux
+      #- go get -v github.com/stretchr/testify/assert
       - go vet
       - go test -coverprofile cp.out
 
