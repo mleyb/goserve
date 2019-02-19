@@ -4,13 +4,18 @@ name: test
 clone:
   depth: 50
 
+workspace:
+  base: /go
+  path: src/github.com/mleyb/goserve
+
 steps:
   - name: testing
     image: golang:latest
     pull: true
     commands:
-      #- go vet
-      #- go test -v cover
+      - go get
+      - go vet
+      - go test -v cover
 
 ---
 kind: pipeline
